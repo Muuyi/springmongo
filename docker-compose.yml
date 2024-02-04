@@ -1,0 +1,22 @@
+services:
+  mongodb:
+    image: mongo
+    container_name: mongo_spring
+    ports: 
+      - 27017:27017
+    volumes:
+      - mongo:/data
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=andrew
+      - MONGO_INITDB_ROOT_PASSWORD=andrew
+  mongo-express:
+    image: mongo-express
+    container_name: mongo_express_spring
+    ports:
+      - 8081:8081
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=andrew
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=andrew
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+volumes:
+  mongo: {}
